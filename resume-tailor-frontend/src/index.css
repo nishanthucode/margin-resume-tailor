@@ -1,0 +1,40 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    @apply bg-ink text-paper font-body antialiased;
+    background-image: radial-gradient(circle at 1px 1px, rgba(245,241,230,0.05) 1px, transparent 0);
+    background-size: 22px 22px;
+  }
+  ::selection {
+    background: #C9A227;
+    color: #14181A;
+  }
+  :focus-visible {
+    outline: 2px solid #C9A227;
+    outline-offset: 2px;
+  }
+}
+
+@layer utilities {
+  .paper-card {
+    @apply bg-paper text-ink rounded-sm shadow-[0_1px_0_rgba(0,0,0,0.4),0_20px_50px_-25px_rgba(0,0,0,0.7)];
+  }
+  .tab-index {
+    writing-mode: horizontal-tb;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
