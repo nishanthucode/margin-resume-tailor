@@ -52,8 +52,8 @@ export default function Analysis() {
   return (
     <PageShell
       eyebrow="Step II"
-      title="Marked up against the posting"
-      description="Requirements from the job description, annotated the way an editor would mark a draft — a check where your resume already covers it, a circle where it doesn't yet."
+      title="Candidate vs Role — Match Analysis"
+      description="Requirements from the role, annotated like an editor's markup — checks where the candidate matches, circles where gaps remain."
       folio="fol. 02"
     >
       <div className="flex flex-col-reverse md:flex-row gap-8 md:gap-12">
@@ -85,8 +85,8 @@ export default function Analysis() {
 
           {gaps.length === 0 && (
             <p className="text-sm text-ink/50 italic mt-2">
-              No gaps found against the parsed requirements — strong alignment.
-            </p>
+                No gaps found against the parsed requirements — strong match.
+              </p>
           )}
         </div>
 
@@ -101,14 +101,14 @@ export default function Analysis() {
 
       <div className="mt-10 pt-6 border-t border-ink/10 flex items-center justify-between">
         <p className="text-xs text-ink/40 max-w-sm">
-          Next, generate resume bullets rewritten to speak directly to the
-          language this job description uses.
+          Next, generate suggested edits to the candidate's resume so it
+          reflects the role's language and priorities.
         </p>
         <Link
           to="/tailor"
           className="inline-flex items-center gap-2 bg-ink text-paper px-5 py-3 rounded-sm font-medium text-sm hover:bg-proof-green transition-colors shrink-0"
         >
-          Tailor my bullets
+          Generate suggested edits
           <ArrowRight size={16} />
         </Link>
       </div>

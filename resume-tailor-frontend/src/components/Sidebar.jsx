@@ -2,10 +2,10 @@ import { NavLink } from "react-router-dom";
 import { FileText, ScanSearch, PenLine, LayoutGrid } from "lucide-react";
 
 const items = [
-  { to: "/", label: "Upload", num: "I", icon: FileText, end: true },
-  { to: "/analysis", label: "Gap Analysis", num: "II", icon: ScanSearch },
-  { to: "/tailor", label: "Tailor Bullets", num: "III", icon: PenLine },
-  { to: "/tracker", label: "Tracker", num: "IV", icon: LayoutGrid },
+  { to: "/", label: "Candidates", num: "I", icon: FileText, end: true },
+  { to: "/analysis", label: "Match Analysis", num: "II", icon: ScanSearch },
+  { to: "/tailor", label: "Suggested Edits", num: "III", icon: PenLine },
+  { to: "/tracker", label: "Pipeline", num: "IV", icon: LayoutGrid },
 ];
 
 export default function Sidebar() {
@@ -15,8 +15,8 @@ export default function Sidebar() {
         <div className="flex items-baseline gap-2">
           <span className="font-display italic text-2xl text-paper">Margin</span>
         </div>
-        <p className="mt-1 text-[11px] uppercase tracking-[0.18em] text-paper/40 font-mono">
-          Resume Tailoring Studio
+        <p className="mt-1 text-[11px] uppercase tracking-[0.12em] text-paper/40 font-mono">
+          Recruiter Studio
         </p>
       </div>
 

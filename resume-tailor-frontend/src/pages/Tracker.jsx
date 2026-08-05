@@ -69,8 +69,8 @@ export default function Tracker() {
   return (
     <PageShell
       eyebrow="Step IV"
-      title="Every application, one ledger"
-      description="Track status across everything you've tailored a resume for. Saved tailored versions travel with each row."
+      title="Pipeline — Candidate ledger"
+      description="Track status across candidates and roles. Suggested edits travel with each row for quick reuse."
       folio="fol. 04"
     >
       <form onSubmit={handleAdd} className="flex flex-col sm:flex-row gap-3 mb-6">
@@ -168,7 +168,7 @@ export default function Tracker() {
       </div>
 
       <p className="mt-4 text-xs text-ink/40 font-mono">
-        stored locally for this preview — moves to MongoDB once the backend is wired up
+          stored locally for this preview — moves to MongoDB once the backend is wired up
       </p>
     </PageShell>
   );

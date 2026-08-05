@@ -60,15 +60,15 @@ export default function Upload() {
   return (
     <PageShell
       eyebrow="Step I"
-      title="Bring in your resume and the job posting"
-      description="Paste text directly, or upload a .pdf, .docx, or .txt file. Everything below stays on this page until you run the analysis."
+      title="Add a candidate and the role description"
+      description="Paste text directly, or upload a .pdf, .docx, or .txt file. Everything below stays on this page until you run the match analysis."
       folio="fol. 01"
     >
       <div className="grid md:grid-cols-2 gap-6">
         {/* Resume input */}
         <div>
           <div className="flex items-center justify-between mb-2">
-            <label className="text-sm font-medium text-ink/80">Your resume</label>
+            <label className="text-sm font-medium text-ink/80">Candidate resume</label>
             <button
               type="button"
               onClick={() => fileInputRef.current?.click()}
@@ -117,8 +117,8 @@ export default function Upload() {
 
         {/* JD input */}
         <div>
-          <div className="flex items-center justify-between mb-2">
-            <label className="text-sm font-medium text-ink/80">Job description</label>
+            <div className="flex items-center justify-between mb-2">
+            <label className="text-sm font-medium text-ink/80">Role description</label>
             <span className="inline-flex items-center gap-1.5 text-xs text-ink/35">
               <ClipboardPaste size={14} strokeWidth={1.75} />
               Paste from posting
@@ -140,9 +140,8 @@ export default function Upload() {
 
       <div className="mt-8 flex items-center justify-between gap-6">
         <p className="text-xs text-ink/40 max-w-sm">
-          Parsing, gap analysis, and bullet generation all run through the
-          Express backend — LLM parsing, embeddings-based match scoring, and
-          MongoDB-backed tracking.
+          Parsing and match analysis run through the backend — NLP parsing and
+          embeddings-based match scoring produce a concise candidate vs role report.
         </p>
         <button
           onClick={handleAnalyze}
@@ -152,11 +151,11 @@ export default function Upload() {
           {loading ? (
             <>
               <Loader2 size={16} className="animate-spin" />
-              Analyzing…
+              Analyzing candidate…
             </>
           ) : (
             <>
-              Run gap analysis
+              Run match analysis
               <ArrowRight size={16} />
             </>
           )}

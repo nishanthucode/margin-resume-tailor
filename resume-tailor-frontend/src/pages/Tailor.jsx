@@ -30,8 +30,8 @@ export default function Tailor() {
   return (
     <PageShell
       eyebrow="Step III"
-      title="Rewritten in the posting's own language"
-      description="Same experience, reworded to surface what this job description is actually asking for. Review each line before it goes on the resume."
+      title="Suggested resume edits"
+      description="Reworded lines and suggestions to help the candidate's resume read like the role description. Review each suggestion before saving."
       folio="fol. 03"
     >
       {loading && (
@@ -47,9 +47,9 @@ export default function Tailor() {
             <div key={bullet.id} className="border border-ink/10 rounded-sm p-4 bg-white/30">
               <p className="text-xs font-mono text-ink/35 mb-2">original</p>
               <p className="text-sm text-ink/50 line-through decoration-proof-red/40 mb-3">
-                {bullet.original}
-              </p>
-              <p className="text-xs font-mono text-proof-green/80 mb-2">tailored</p>
+                    {bullet.original}
+                  </p>
+              <p className="text-xs font-mono text-proof-green/80 mb-2">suggested</p>
               <div className="flex items-start justify-between gap-4">
                 <p className="text-sm text-ink leading-relaxed">{bullet.tailored}</p>
                 <button
@@ -73,14 +73,14 @@ export default function Tailor() {
 
       <div className="mt-10 pt-6 border-t border-ink/10 flex items-center justify-between">
         <p className="text-xs text-ink/40 max-w-sm">
-          Save this version to the tracker to keep it alongside the job you're
-          applying to.
+          Save this suggested version to the pipeline to keep it alongside the
+          role and candidate record.
         </p>
         <Link
           to="/tracker"
           className="inline-flex items-center gap-2 bg-ink text-paper px-5 py-3 rounded-sm font-medium text-sm hover:bg-proof-green transition-colors shrink-0"
         >
-          Go to tracker
+          Save to pipeline
           <ArrowRight size={16} />
         </Link>
       </div>
