@@ -88,7 +88,8 @@ export default function Tracker() {
         />
         <button
           type="submit"
-          className="inline-flex items-center justify-center gap-2 bg-ink text-paper px-4 py-2.5 rounded-sm text-sm font-medium hover:bg-proof-green transition-colors shrink-0"
+          className="btn btn-primary touch-btn"
+          aria-label="Add new pipeline row"
         >
           <Plus size={15} />
           Add
@@ -99,14 +100,52 @@ export default function Tracker() {
         <button
           onClick={handleSaveCurrent}
           className="mb-6 inline-flex items-center gap-2 text-xs font-mono text-proof-green hover:text-ink transition-colors"
+          aria-label="Save current analysis to pipeline"
         >
           <Save size={13} />
           save current analysis + tailored bullets as a new row
         </button>
       )}
 
-      <div className="border border-ink/10 rounded-sm overflow-hidden">
-        <table className="w-full text-sm">
+      {/* Mobile cards */}
+      <div className="space-y-3 md:hidden">
+        {loading && (
+          <div className="px-4 py-6 text-center text-ink/40">Loading…</div>
+        )}
+        {!loading && applications.length === 0 && (
+          <div className="px-4 py-6 text-center text-ink/40 italic">Nothing tracked yet — add a row above, or save an analysis from the Tailor step.</div>
+        )}
+        {applications.map((app) => (
+          <div key={app.id} className="paper-card bg-white/30">
+            <div className="flex items-start justify-between gap-3">
+              <div>
+                <div className="font-medium text-ink">{app.company}</div>
+                <div className="text-ink/70 text-sm">{app.role}</div>
+              </div>
+              <div className="text-right font-mono text-ink/70">{app.matchScore != null ? `${app.matchScore}%` : '—'}</div>
+            </div>
+            <div className="mt-3 flex items-center justify-between gap-3">
+              <select
+                value={app.status}
+                onChange={(e) => handleStatusChange(app, e.target.value)}
+                className={`text-sm font-medium rounded-full px-3 py-1.5 border-0 outline-none cursor-pointer ${STATUS_STYLE[app.status] || ""}`}
+                aria-label={`Change status for ${app.company} ${app.role}`}
+              >
+                {STATUSES.map((s) => (
+                  <option key={s} value={s}>{s}</option>
+                ))}
+              </select>
+              <div className="text-xs text-ink/40 font-mono">{app.date}</div>
+              <button onClick={() => handleDelete(app.id)} className="text-ink/30 hover:text-proof-red transition-colors" aria-label="Delete row">
+                <Trash2 size={16} />
+              </button>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <div className="hidden md:block border border-ink/10 rounded-sm overflow-x-auto">
+        <table className="w-full text-sm min-w-[640px]">
           <thead>
             <tr className="bg-ink/5 text-left text-[11px] uppercase tracking-wide text-ink/40 font-mono">
               <th className="px-4 py-3 font-medium">Company</th>
@@ -144,7 +183,8 @@ export default function Tracker() {
                   <select
                     value={app.status}
                     onChange={(e) => handleStatusChange(app, e.target.value)}
-                    className={`text-xs font-medium rounded-full px-2.5 py-1 border-0 outline-none cursor-pointer ${STATUS_STYLE[app.status] || ""}`}
+                    className={`text-sm font-medium rounded-full px-3 py-1.5 border-0 outline-none cursor-pointer ${STATUS_STYLE[app.status] || ""}`}
+                    aria-label={`Change status for ${app.company} ${app.role}`}
                   >
                     {STATUSES.map((s) => (
                       <option key={s} value={s}>{s}</option>

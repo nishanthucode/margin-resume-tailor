@@ -10,23 +10,72 @@
     @apply bg-ink text-paper font-body antialiased;
     background-image: radial-gradient(circle at 1px 1px, rgba(245,241,230,0.05) 1px, transparent 0);
     background-size: 22px 22px;
+    /* design tokens */
+    --color-ink: #0F1720;
+    --color-ink-soft: #273036;
+    --color-paper: #F8F6F0;
+    --color-paper-dim: #F1EDE6;
+    --color-gold: #BFA24A;
+    --color-green: #3F7666;
+    --color-red: #B23A2F;
+    --space-1: 4px;
+    --space-2: 8px;
+    --space-3: 12px;
+    --space-4: 16px;
+    --space-5: 24px;
+    --space-6: 32px;
+    --radius-sm: 6px;
+    --radius-md: 10px;
+    --card-shadow: 0 8px 28px rgba(16,24,28,0.10);
+    --focus-ring: 3px rgba(191,162,74,0.12);
   }
   ::selection {
     background: #C9A227;
     color: #14181A;
   }
   :focus-visible {
-    outline: 2px solid #C9A227;
-    outline-offset: 2px;
+    outline: none;
+    box-shadow: 0 0 0 var(--space-2) var(--focus-ring);
+    border-radius: var(--radius-sm);
   }
 }
 
 @layer utilities {
   .paper-card {
-    @apply bg-paper text-ink rounded-sm shadow-[0_1px_0_rgba(0,0,0,0.4),0_20px_50px_-25px_rgba(0,0,0,0.7)];
+    @apply bg-paper text-ink;
+    border-radius: var(--radius-md);
+    box-shadow: var(--card-shadow);
+    padding: var(--space-5);
+    border: 1px solid rgba(16,24,28,0.03);
   }
   .tab-index {
     writing-mode: horizontal-tb;
+  }
+  .mobile-bottom-nav {
+    margin-left: env(safe-area-inset-left);
+    margin-right: env(safe-area-inset-right);
+    backdrop-filter: blur(6px);
+  }
+  .touch-btn {
+    @apply inline-flex items-center justify-center gap-2 px-4 py-3 rounded-md touch-manipulation;
+    min-height: 44px;
+  }
+  .btn {
+    @apply inline-flex items-center gap-2 font-medium rounded-md transition-colors duration-150;
+    padding: 0.6rem 1rem;
+  }
+  .btn-primary {
+    background-color: var(--color-ink);
+    color: var(--color-paper);
+  }
+  .btn-primary:hover { filter: brightness(1.04); }
+  .btn-ghost {
+    background: transparent;
+    border: 1px solid rgba(20,24,26,0.06);
+    color: inherit;
+  }
+  .muted {
+    color: rgba(20,24,26,0.6);
   }
 }
 

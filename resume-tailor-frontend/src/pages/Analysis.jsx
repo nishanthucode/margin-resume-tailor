@@ -60,7 +60,7 @@ export default function Analysis() {
         <div className="flex-1 min-w-0">
           <div className="space-y-2.5">
             {matches.map((m) => (
-              <div key={m} className="flex items-center gap-3 group">
+              <div key={m} className="flex items-center gap-3 group hover:bg-white/5 rounded-md px-2 py-1 transition-colors">
                 <span className="w-6 h-6 rounded-full bg-proof-green/10 flex items-center justify-center shrink-0">
                   <Check size={13} className="text-proof-green" strokeWidth={2.5} />
                 </span>
@@ -73,7 +73,7 @@ export default function Analysis() {
               </div>
             ))}
             {gaps.map((g) => (
-              <div key={g} className="flex items-center gap-3 group">
+              <div key={g} className="flex items-center gap-3 group hover:bg-white/5 rounded-md px-2 py-1 transition-colors">
                 <span className="w-6 h-6 rounded-full border-2 border-proof-red/60 shrink-0" />
                 <span className="text-ink/70">{g}</span>
                 <span className="text-[11px] font-mono text-proof-red/70 ml-auto">
@@ -106,7 +106,8 @@ export default function Analysis() {
         </p>
         <Link
           to="/tailor"
-          className="inline-flex items-center gap-2 bg-ink text-paper px-5 py-3 rounded-sm font-medium text-sm hover:bg-proof-green transition-colors shrink-0"
+          className="inline-flex items-center gap-2 bg-ink text-paper px-5 py-3 rounded-sm font-medium text-sm hover:bg-proof-green transition-colors shrink-0 touch-btn"
+          aria-label="Generate suggested edits"
         >
           Generate suggested edits
           <ArrowRight size={16} />

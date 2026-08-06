@@ -35,16 +35,16 @@ export default function Tailor() {
       folio="fol. 03"
     >
       {loading && (
-        <div className="flex items-center gap-2 text-ink/50 text-sm py-10 justify-center">
+        <div className="flex items-center gap-2 text-ink/50 text-sm py-10 justify-center" role="status" aria-live="polite">
           <Loader2 size={16} className="animate-spin" />
-          Rewriting your bullets…
+          <span>Rewriting your bullets…</span>
         </div>
       )}
 
       {!loading && tailoredBullets && (
         <div className="space-y-5">
           {tailoredBullets.map((bullet) => (
-            <div key={bullet.id} className="border border-ink/10 rounded-sm p-4 bg-white/30">
+            <div key={bullet.id} className="border border-ink/10 rounded-md p-4 bg-white/30 transition-shadow hover:shadow-md">
               <p className="text-xs font-mono text-ink/35 mb-2">original</p>
               <p className="text-sm text-ink/50 line-through decoration-proof-red/40 mb-3">
                     {bullet.original}
@@ -54,8 +54,8 @@ export default function Tailor() {
                 <p className="text-sm text-ink leading-relaxed">{bullet.tailored}</p>
                 <button
                   onClick={() => handleCopy(bullet)}
-                  className="shrink-0 mt-0.5 text-ink/40 hover:text-proof-green transition-colors"
-                  aria-label="Copy tailored bullet"
+                  className="shrink-0 mt-0.5 text-ink/40 hover:text-proof-green transition-colors touch-btn"
+                  aria-label="Copy suggested edit"
                 >
                   {copiedId === bullet.id ? <Check size={15} /> : <Copy size={15} />}
                 </button>
@@ -78,7 +78,8 @@ export default function Tailor() {
         </p>
         <Link
           to="/tracker"
-          className="inline-flex items-center gap-2 bg-ink text-paper px-5 py-3 rounded-sm font-medium text-sm hover:bg-proof-green transition-colors shrink-0"
+          className="btn btn-primary touch-btn"
+          aria-label="Save suggested edits to pipeline"
         >
           Save to pipeline
           <ArrowRight size={16} />

@@ -72,7 +72,8 @@ export default function Upload() {
             <button
               type="button"
               onClick={() => fileInputRef.current?.click()}
-              className="inline-flex items-center gap-1.5 text-xs font-medium text-proof-green hover:text-ink transition-colors"
+              className="inline-flex items-center gap-1.5 text-sm font-medium text-proof-green hover:text-ink transition-colors touch-btn"
+              aria-label="Upload candidate resume file"
             >
               <UploadCloud size={14} strokeWidth={1.75} />
               Upload file
@@ -83,6 +84,7 @@ export default function Upload() {
               accept=".txt,.pdf,.docx"
               className="hidden"
               onChange={(e) => handleFile(e.target.files?.[0])}
+              aria-hidden="true"
             />
           </div>
 
@@ -146,7 +148,9 @@ export default function Upload() {
         <button
           onClick={handleAnalyze}
           disabled={loading}
-          className="inline-flex items-center gap-2 bg-ink text-paper px-5 py-3 rounded-sm font-medium text-sm hover:bg-proof-green transition-colors disabled:opacity-50 disabled:cursor-not-allowed shrink-0"
+          aria-busy={loading}
+          className="btn btn-primary touch-btn disabled:opacity-50 disabled:cursor-not-allowed"
+          aria-label="Run match analysis for candidate"
         >
           {loading ? (
             <>

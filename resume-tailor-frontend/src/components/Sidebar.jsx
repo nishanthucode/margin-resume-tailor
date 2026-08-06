@@ -10,7 +10,8 @@ const items = [
 
 export default function Sidebar() {
   return (
-    <aside className="w-full md:w-64 shrink-0 border-b md:border-b-0 md:border-r border-ink-line">
+    <>
+      <aside className="hidden md:block md:w-64 shrink-0 border-b-0 md:border-r border-ink-line">
       <div className="px-6 pt-8 pb-6">
         <div className="flex items-baseline gap-2">
           <span className="font-display italic text-2xl text-paper">Margin</span>
@@ -56,6 +57,34 @@ export default function Sidebar() {
         <br />
         backend wiring pending
       </div>
-    </aside>
+      </aside>
+
+      {/* Mobile bottom nav */}
+      <nav
+        className="mobile-bottom-nav md:hidden fixed left-0 right-0 bottom-3 mx-3 bg-ink/95 rounded-xl shadow-lg px-3 py-2 flex items-center justify-between z-40"
+        aria-label="Primary navigation"
+      >
+        {items.map(({ to, label, num, icon: Icon, end }) => (
+          <NavLink
+            key={to}
+            to={to}
+            end={end}
+            className={({ isActive }) =>
+              `inline-flex flex-col items-center justify-center gap-1 px-3 py-2 rounded-md text-xs transition-colors ${
+                isActive ? 'text-paper' : 'text-paper/60 hover:text-paper'
+              }`
+            }
+            aria-label={label}
+          >
+            {({ isActive }) => (
+              <>
+                <Icon size={18} strokeWidth={1.75} />
+                <span className="sr-only">{label}</span>
+              </>
+            )}
+          </NavLink>
+        ))}
+      </nav>
+    </>
   );
 }

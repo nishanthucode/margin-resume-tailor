@@ -5,27 +5,27 @@ export default {
     extend: {
       colors: {
         ink: {
-          DEFAULT: "#0B2545",
-          soft: "#173A5A",
-          line: "#2F4A69",
+          DEFAULT: "#0F1720", // muted charcoal
+          soft: "#273036",
+          line: "#E6E0D6",
         },
         paper: {
-          DEFAULT: "#F8FAFC",
-          dim: "#EDF2F7",
+          DEFAULT: "#F8F6F0", // warm cream
+          dim: "#F1EDE6",
         },
         proof: {
           red: "#B23A2F",
-          green: "#117A65",
-          gold: "#D69E2E",
+          green: "#3F7666",
+          gold: "#BFA24A",
         },
       },
       fontFamily: {
-        display: ["'Poppins'", "sans-serif"],
-        body: ["'Roboto'", "sans-serif"],
-        mono: ["'Source Code Pro'", "monospace"],
+        display: ["'Fraunces'", "serif"],
+        body: ["'Inter'", "sans-serif"],
+        mono: ["'IBM Plex Mono'", "monospace"],
       },
       backgroundImage: {
-        grain: "radial-gradient(circle at 1px 1px, rgba(11,37,69,0.02) 1px, transparent 0)",
+        grain: "radial-gradient(circle at 1px 1px, rgba(245,241,230,0.045) 1px, transparent 0)",
       },
     },
   },
